@@ -1,0 +1,37 @@
+@import "../Variables/_Colors.scss";
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+body {
+  padding: 0;
+  background-color: $bggrey;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.comic-title-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  // justify-content: space-evenly;
+  padding: 30px 0 0 0;
+
+  > i {
+    font-size: 2rem;
+    color: $younggreen;
+    padding-right: 10px;
+  }
+}

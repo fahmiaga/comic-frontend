@@ -1,0 +1,84 @@
+@import "../Variables/_Colors.scss";
+
+.navbar-container {
+  width: 100%;
+  height: 90px;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.19);
+  // position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include for-size(phone) {
+    position: fixed;
+    display: inline-block;
+    bottom: 0;
+    height: 50px;
+    background-color: $white;
+    z-index: 9999;
+  }
+
+  > img {
+    width: 300px;
+    margin-left: 80px;
+    padding-bottom: 20px;
+
+    @include for-size(tablet) {
+      margin-left: 30px;
+    }
+    @include for-size(phone) {
+      display: none;
+    }
+  }
+
+  .link-list {
+    margin-right: 80px;
+
+    @include for-size(tablet) {
+      margin-right: 20px;
+    }
+    @include for-size(phone) {
+      display: none;
+      margin-right: 0;
+    }
+    > ul {
+      font-size: 1.5rem;
+      > li {
+        padding-right: 30px;
+        float: left;
+        cursor: pointer;
+        > img {
+          width: 35px;
+          height: 35px;
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+
+  .link-list-mobile {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+
+    .active {
+      color: $yellowgreen;
+    }
+
+    @include for-size(tablet) {
+      display: none;
+    }
+
+    @include for-size(dekstop) {
+      display: none;
+    }
+
+    > div {
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  }
+}

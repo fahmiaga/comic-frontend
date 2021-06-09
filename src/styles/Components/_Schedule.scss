@@ -1,0 +1,29 @@
+@import "../Variables/_Colors.scss";
+
+.schedule-container {
+  width: 80%;
+  margin: auto;
+
+  .comic-days {
+    margin-top: 10px;
+    display: flex;
+
+    > p {
+      width: 100px;
+      padding: 5px;
+      text-align: center;
+      cursor: pointer;
+
+      @include for-size(phone) {
+        width: 50px;
+      }
+    }
+  }
+  .comic-schedule {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

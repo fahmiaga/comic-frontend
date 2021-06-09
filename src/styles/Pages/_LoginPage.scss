@@ -1,0 +1,48 @@
+@import "../Variables/_Colors.scss";
+
+.auth-container {
+  position: relative;
+  width: 100%;
+  height: 1030px;
+  background-image: url(../../assets/background/Ultimate-Shonen-Jump-Manga.jpg);
+  z-index: 1;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 1030px;
+    background-color: $black;
+    position: absolute;
+    top: 0;
+    opacity: 0.8;
+    z-index: -1;
+  }
+
+  .auth-wrapper {
+    width: 80%;
+    margin: auto;
+    padding-top: 10%;
+    padding-bottom: 129px;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include for-size(tablet) {
+      justify-content: center;
+    }
+
+    > img {
+      height: 130px;
+      margin-right: 80px;
+      margin-bottom: 30px;
+
+      @include for-size(tablet) {
+        margin-left: 70px;
+        height: 100px;
+      }
+      @include for-size(phone) {
+        margin-left: 90px;
+        height: 50px;
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@import "../Variables/_Colors.scss";
+
+.new-comic-container {
+  width: 80%;
+  margin: 30px auto;
+
+  .card-container {
+    display: flex;
+    justify-content: space-between;
+    // margin-top: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  // swiper
+  // .swiper-wrapper {
+  //   align-items: center;
+  // }
+
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+  }
+
+  .swiper-slide {
+    width: 210px;
+    height: 250px;
+    border-radius: 10px;
+    background-color: rebeccapurple;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: black;
+  }
+
+  .swiper-slide {
+    width: 210px;
+    height: 250px;
+  }
+
+  // .swiper-slide:nth-child(2n) {
+  //   width: 60%;
+  // }
+
+  // .swiper-slide:nth-child(3n) {
+  //   width: 40%;
+  // }
+}
