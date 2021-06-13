@@ -27,7 +27,7 @@
     width: 210px;
     height: 250px;
     border-radius: 10px;
-    background-color: rebeccapurple;
+
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -41,6 +41,11 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+
+    @include for-size(phone) {
+      width: 230px;
+      height: 250px;
+    }
   }
 
   .swiper-slide img {
@@ -54,6 +59,11 @@
   .swiper-slide {
     width: 210px;
     height: 250px;
+
+    @include for-size(phone) {
+      width: 230px;
+      height: 250px;
+    }
   }
 
   // .swiper-slide:nth-child(2n) {

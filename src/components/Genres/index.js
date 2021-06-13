@@ -1,9 +1,7 @@
 import React from "react";
-import Card2 from "../Card2";
+import Card from "../Card";
 
-const Schedule = () => {
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
+const Genres = () => {
   const data = [
     {
       title: "Naruto",
@@ -55,8 +53,6 @@ const Schedule = () => {
       description:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa. aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, ",
       image: "https://i.kym-cdn.com/photos/images/facebook/000/969/362/1db.jpg",
-      genre: "Horror",
-      rating: "4.5",
     },
     {
       title: "Fullmetal Alchemist",
@@ -64,36 +60,64 @@ const Schedule = () => {
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa. aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa",
       image:
         "https://www.gamulator.com/img/roms/fullmetal-alchemist-trading-card-game-ds-cover-xenophobia.jpg",
-      genre: "Action",
-      rating: "4.5",
     },
   ];
 
   return (
     <>
-      <div className="schedule-container">
+      <div className="genres-container">
         <div className="comic-title-section">
-          <i className="fas fa-calendar-alt"></i>
-          <h5>COMICS SCHEDULES</h5>
+          <i className="fas fa-stethoscope"></i>
+          <h5>COMICS GENRES</h5>
         </div>
-        <div className="comic-days">
-          {days.map((day, i) => (
-            <p key={i} className={i === 0 ? "schedule-active" : ""}>
-              {day}
-            </p>
-          ))}
+        <div className="comic-genres">
+          <div className="genres-card1">
+            <div className="genres-title">
+              <h5>Comedy</h5>
+              <p>&gt;</p>
+            </div>
+            <div className="genres-wise">
+              <p>Good Laughter is all we need</p>
+            </div>
+          </div>
+          <div className="new-comic-genres">
+            {data.slice(0, 4).map((comic, i) => (
+              <Card
+                key={i}
+                title={comic.title}
+                description={comic.description}
+                image={comic.image}
+                genre={comic.genre}
+                rating={comic.rating}
+              />
+            ))}
+          </div>
         </div>
-        <div className="comic-schedule">
-          {data.reverse().map((comic, i) => (
-            <Card2
-              key={i}
-              title={comic.title}
-              description={comic.description}
-              image={comic.image}
-              genre={comic.genre}
-              rating={comic.rating}
-            />
-          ))}
+        <div className="comic-genres">
+          <div className="genres-card2">
+            <div className="genres-title">
+              <h5>Action</h5>
+              <p>&gt;</p>
+            </div>
+            <div className="genres-wise">
+              <p>Sometimes you need to get your adrenaline pumping</p>
+            </div>
+          </div>
+          <div className="new-comic-genres">
+            {data
+              .slice(0, 4)
+              .reverse()
+              .map((comic, i) => (
+                <Card
+                  key={i}
+                  title={comic.title}
+                  description={comic.description}
+                  image={comic.image}
+                  genre={comic.genre}
+                  rating={comic.rating}
+                />
+              ))}
+          </div>
         </div>
       </div>
       <hr />
@@ -101,4 +125,4 @@ const Schedule = () => {
   );
 };
 
-export default Schedule;
+export default Genres;

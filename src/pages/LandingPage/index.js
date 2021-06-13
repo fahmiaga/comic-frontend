@@ -3,6 +3,9 @@ import Navbar from "../../components/Navbar";
 import Jumbotron from "../../components/Jumbotron";
 import NewComic from "../../components/NewComic";
 import Schedule from "../../components/Schedule";
+import Genres from "../../components/Genres";
+import All from "../../components/All";
+import Footer from "../../components/Footer";
 
 const LandingPage = () => {
   useEffect(() => {
@@ -15,6 +18,9 @@ const LandingPage = () => {
       <Jumbotron />
       <NewComic />
       <Schedule />
+      <Genres />
+      <All />
+      <Footer />
     </>
   );
 };

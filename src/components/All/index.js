@@ -1,8 +1,16 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/swiper.min.css";
+import "swiper/components/effect-coverflow/effect-coverflow.min.css";
+import "swiper/components/pagination/pagination.min.css";
 import Card2 from "../Card2";
 
-const Schedule = () => {
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+import SwiperCore, { EffectCoverflow, Pagination } from "swiper/core";
+
+const All = () => {
+  SwiperCore.use([EffectCoverflow, Pagination]);
 
   const data = [
     {
@@ -55,8 +63,6 @@ const Schedule = () => {
       description:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa. aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, ",
       image: "https://i.kym-cdn.com/photos/images/facebook/000/969/362/1db.jpg",
-      genre: "Horror",
-      rating: "4.5",
     },
     {
       title: "Fullmetal Alchemist",
@@ -64,41 +70,47 @@ const Schedule = () => {
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa. aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa",
       image:
         "https://www.gamulator.com/img/roms/fullmetal-alchemist-trading-card-game-ds-cover-xenophobia.jpg",
-      genre: "Action",
-      rating: "4.5",
     },
   ];
 
   return (
     <>
-      <div className="schedule-container">
+      <div className="new-comic-all-container">
         <div className="comic-title-section">
-          <i className="fas fa-calendar-alt"></i>
-          <h5>COMICS SCHEDULES</h5>
+          <i className="fas fa-globe"></i>
+          <h5>ALL COMICS</h5>
         </div>
-        <div className="comic-days">
-          {days.map((day, i) => (
-            <p key={i} className={i === 0 ? "schedule-active" : ""}>
-              {day}
-            </p>
+        <Swiper
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 1,
+            depth: 100,
+            modifier: 2,
+            slideShadows: true,
+          }}
+          pagination={true}
+          className="mySwiper"
+        >
+          {data.map((comic, i) => (
+            <SwiperSlide key={i}>
+              <Card2
+                title={comic.title}
+                description={comic.description}
+                image={comic.image}
+                genre={comic.genre}
+                rating={comic.rating}
+              />
+            </SwiperSlide>
           ))}
-        </div>
-        <div className="comic-schedule">
-          {data.reverse().map((comic, i) => (
-            <Card2
-              key={i}
-              title={comic.title}
-              description={comic.description}
-              image={comic.image}
-              genre={comic.genre}
-              rating={comic.rating}
-            />
-          ))}
-        </div>
+        </Swiper>
       </div>
       <hr />
     </>
   );
 };
 
-export default Schedule;
+export default All;

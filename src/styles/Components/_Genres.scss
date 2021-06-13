@@ -1,0 +1,54 @@
+@import "../Variables/_Colors.scss";
+
+.genres-container {
+  width: 80%;
+  margin: auto;
+
+  .comic-genres {
+    width: 100%;
+    margin: 30px auto;
+    display: flex;
+
+    &.comic-genres .genres-card1 {
+      width: 210px;
+      height: 250px;
+      background-color: rgb(133, 5, 253);
+    }
+
+    &.comic-genres .genres-card2 {
+      width: 210px;
+      height: 250px;
+      background-color: rgb(5, 203, 253);
+    }
+
+    .genres-wise {
+      margin: 110px 20px;
+
+      > p {
+        color: $white;
+        font-weight: 500;
+      }
+    }
+
+    .new-comic-genres {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      @include for-size(phone) {
+        display: none;
+      }
+    }
+  }
+}
+.genres-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  > p,
+  h5 {
+    color: $white;
+    margin: 20px;
+  }
+}

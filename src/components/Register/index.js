@@ -32,7 +32,7 @@ const Register = () => {
         </form>
         <p>
           Already have an account? Click
-          <span onClick={() => history.push("/")}> here</span> to login
+          <span onClick={() => history.push("/login")}> here</span> to login
         </p>
       </div>
     </>

@@ -1,0 +1,81 @@
+@import "../Variables/_Colors.scss";
+
+.comic-card2 {
+  width: 200px;
+  height: 300px;
+  margin-top: 20px;
+  position: relative;
+  background-size: cover;
+  overflow: hidden;
+  background-position: center center;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+
+  @include for-size(phone) {
+    width: 140px;
+    height: 240px;
+  }
+
+  .comic-card2-rating {
+    width: 50px;
+    height: 50px;
+    background-color: $black;
+    border-radius: 50%;
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+
+    > p {
+      line-height: 50px;
+      color: $white;
+      font-size: 1.2rem;
+      margin-right: 3px;
+    }
+    > i {
+      color: $gold;
+      margin-left: 3px;
+      margin-top: 15px;
+      @include for-size(phone) {
+        font-size: 0.5rem;
+      }
+    }
+  }
+
+  .comic-information-container {
+    width: 200px;
+    height: 230px;
+    position: absolute;
+    bottom: -100px;
+    background-color: $black;
+    opacity: 0.8;
+    transition: 0.3s;
+    text-align: center;
+    color: $grey5;
+
+    @include for-size(phone) {
+      width: 140px;
+      height: 240px;
+      @include for-size(phone) {
+        font-size: 12px;
+      }
+    }
+
+    .comic-desc {
+      width: 195px;
+    }
+    .comic-genre {
+      //   width: 195px;
+      font-weight: 500;
+      @include for-size(phone) {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &:hover {
+    .comic-information-container {
+      bottom: 0;
+    }
+  }
+}

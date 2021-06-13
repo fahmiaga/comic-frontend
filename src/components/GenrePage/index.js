@@ -1,8 +1,15 @@
 import React from "react";
-import Card2 from "../Card2";
+import Card2 from "../../components/Card2";
 
-const Schedule = () => {
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const GenrePage = () => {
+  const genres = [
+    "Action",
+    "Horror",
+    "Comedy",
+    "Romantic",
+    "Drama",
+    "Thriller",
+  ];
 
   const data = [
     {
@@ -71,19 +78,15 @@ const Schedule = () => {
 
   return (
     <>
-      <div className="schedule-container">
-        <div className="comic-title-section">
-          <i className="fas fa-calendar-alt"></i>
-          <h5>COMICS SCHEDULES</h5>
-        </div>
-        <div className="comic-days">
-          {days.map((day, i) => (
-            <p key={i} className={i === 0 ? "schedule-active" : ""}>
-              {day}
-            </p>
+      <div className="comic-genre-page-container">
+        <div className="comic-genre-page">
+          {genres.map((genre, i) => (
+            <div className="genre-button" key={i}>
+              {genre}
+            </div>
           ))}
         </div>
-        <div className="comic-schedule">
+        <div className="comics-schedule-page">
           {data.reverse().map((comic, i) => (
             <Card2
               key={i}
@@ -96,9 +99,8 @@ const Schedule = () => {
           ))}
         </div>
       </div>
-      <hr />
     </>
   );
 };
 
-export default Schedule;
+export default GenrePage;

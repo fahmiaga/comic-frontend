@@ -1,0 +1,7 @@
+.comic-footer {
+  text-align: center;
+
+  @include for-size(phone) {
+    margin-bottom: 70px;
+  }
+}

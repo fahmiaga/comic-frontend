@@ -1,0 +1,31 @@
+@import "../Variables/Colors";
+
+.comic-genre-page-container {
+  width: 80%;
+  margin: 10px auto;
+
+  @include for-size(phone) {
+    width: 90%;
+  }
+
+  .comic-genre-page {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .genre-button {
+      width: 100px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      border: 2px solid $younggreen;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $yellowgreen;
+        color: $white;
+      }
+    }
+  }
+}

@@ -12,7 +12,7 @@ const Login = () => {
           <img src={logo} alt="" />
           <BrowserRouter>
             <Switch>
-              <Route exact path="/" component={LoginC} />
+              <Route exact path="/login" component={LoginC} />
               <Route path="/register" component={Register} />
             </Switch>
           </BrowserRouter>
