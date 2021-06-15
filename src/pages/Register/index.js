@@ -1,16 +1,15 @@
-// import React, { useEffect } from "react";
-import LoginC from "../../components/Login";
+// import LoginC from "../../components/Login";
 import logo from "../../assets/logo/logo.png";
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import Register from "../../components/Register";
+import RegisterC from "../../components/Register";
 
-const Login = () => {
+const Register = () => {
   return (
     <>
       <div className="auth-container">
         <div className="auth-wrapper">
           <img src={logo} alt="" />
-          <LoginC />
+          <RegisterC />
           {/* <BrowserRouter>
             <Switch>
               <Route path="/login" component={LoginC} />
@@ -23,4 +22,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

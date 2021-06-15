@@ -11,6 +11,14 @@ const Navbar = () => {
 
   let history = useHistory();
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userData");
+
+    history.push("/login");
+    window.location.reload(true);
+  };
+
   return (
     <>
       <div className="navbar-container">
@@ -20,7 +28,7 @@ const Navbar = () => {
             <li onClick={() => history.push("/genres")}>Genres</li>
             <li onClick={() => history.push("/schedules")}>Schedules</li>
             <li>
-              <div className="dropdown"></div>
+              {/* <div className="dropdown"></div> */}
               <img
                 src="http://lexaquiliabd.com/wp-content/uploads/2017/10/ATbrxjpyc.jpg"
                 alt=""
@@ -40,7 +48,11 @@ const Navbar = () => {
                   </button>
                 </li>
                 <li>
-                  <button className="dropdown-item" type="button">
+                  <button
+                    className="dropdown-item"
+                    type="button"
+                    onClick={handleLogout}
+                  >
                     Logout
                   </button>
                 </li>

@@ -73,7 +73,7 @@ const SchedulePage = () => {
       <div className="comic-schedule-days">
         <div className="schedule-days">
           {days.map((day, i) => (
-            <p key={i} className={i === 0 ? "schedule-day-active" : ""}>
+            <p key={i} className={i === 0 ? "schedule-active" : ""}>
               {day}
             </p>
           ))}

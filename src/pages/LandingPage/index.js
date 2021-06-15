@@ -6,11 +6,19 @@ import Schedule from "../../components/Schedule";
 import Genres from "../../components/Genres";
 import All from "../../components/All";
 import Footer from "../../components/Footer";
+import { useHistory } from "react-router-dom";
 
 const LandingPage = () => {
+  const history = useHistory();
   useEffect(() => {
     document.title = "MANGALIME - Read Comics Online";
   }, []);
+
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    history.push("/login");
+  }
 
   return (
     <>

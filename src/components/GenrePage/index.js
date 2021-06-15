@@ -86,7 +86,7 @@ const GenrePage = () => {
             </div>
           ))}
         </div>
-        <div className="comics-schedule-page">
+        <div className="comics-genre-page">
           {data.reverse().map((comic, i) => (
             <Card2
               key={i}
