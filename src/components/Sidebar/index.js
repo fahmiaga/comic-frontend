@@ -17,8 +17,11 @@ const Sidebar = () => {
           >
             <i className="fas fa-database"></i> <p>Add Comic</p>
           </div>
-          <div className="admin-list">
-            <i className="fas fa-database"></i> <p>Add Comic</p>
+          <div
+            className="admin-list"
+            onClick={() => history.push("/add-genre")}
+          >
+            <i className="fas fa-stethoscope"></i> <p>Add Genre</p>
           </div>
           <div className="admin-list">
             <i className="fas fa-database"></i> <p>Add Comic</p>

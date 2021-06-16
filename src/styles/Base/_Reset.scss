@@ -42,9 +42,16 @@ li {
 
 .admin-comic-container {
   width: 70%;
-  height: 500px;
+  height: auto;
   margin: 10px 0 10px 330px;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  .content-comic-container {
+    width: 95%;
+    height: auto;
+    margin: 5px auto;
+    padding-top: 10px;
+  }
 }
 
 .message-error {
@@ -54,4 +61,14 @@ li {
 
 .input-error {
   border-bottom: red;
+}
+
+.input-width {
+  width: 400px;
+}
+
+.input-add-wrapper {
+  width: 40%;
+  display: flex;
+  align-items: baseline;
 }

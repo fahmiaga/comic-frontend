@@ -1,24 +1,24 @@
-import { POST_LOGIN, POST_REGISTER, POST_LOGOUT } from "../actionsType";
+import { GET_ALL_GENRES, POST_GENRE, PUT_GENRE } from "../actionsType";
 
 const initialState = {
-  signIn: "",
+  genres: [],
   message: "",
 };
 
-const authReducer = (state = initialState, action) => {
+const genreReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case POST_LOGIN:
+    case GET_ALL_GENRES:
+      return {
+        ...state,
+        genres: payload,
+      };
+    case POST_GENRE:
       return {
         ...state,
         message: payload,
       };
-    case POST_REGISTER:
-      return {
-        ...state,
-        message: payload,
-      };
-    case POST_LOGOUT:
+    case PUT_GENRE:
       return {
         ...state,
         message: payload,
@@ -28,4 +28,4 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export default authReducer;
+export default genreReducer;

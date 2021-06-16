@@ -7,6 +7,8 @@ import Genres from "./pages/Genres";
 import AddComic from "./pages/AddComic";
 import Admin from "./pages/Admin";
 import Register from "./pages/Register";
+import FormAddComic from "./pages/FormAddComic";
+import AddGenre from "./pages/AddGenre";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/add-comic" component={AddComic} />
+          <Route path="/form-add-comic" component={FormAddComic} />
+          <Route path="/add-genre" component={AddGenre} />
         </Switch>
       </BrowserRouter>
     </>

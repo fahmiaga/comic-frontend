@@ -1,6 +1,7 @@
 import axios from "axios";
-import { POST_LOGIN } from "../actionsType";
-import { POST_REGISTER } from "../actionsType";
+import apiClient from "../actions/api";
+
+import { POST_REGISTER, POST_LOGOUT, POST_LOGIN } from "../actionsType";
 
 const Api = `http://localhost:8000/api`;
 
@@ -16,7 +17,6 @@ export const postLogin = (userData) => (dispatch) => {
     axios
       .post(`${Api}/login`, userData, config)
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userdata", JSON.stringify(res.data.user));
         dispatch({
@@ -60,6 +60,30 @@ export const postRegister = (userData) => (dispatch) => {
             message: err.response.data,
           },
         });
+      });
+  });
+};
+export const postLogout = (token) => (dispatch) => {
+  const config = {
+    headers: { Authorization: "Bearer " + token },
+  };
+
+  console.log(config);
+
+  // apiClient.get("sanctum/csrf-cookie").then((response) => {
+  axios.defaults.withCredentials = true;
+  axios.get("http://localhost:8000/sanctum/csrf-cookie").then((response) => {
+    axios
+      .post(`${Api}/logout`, config)
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: POST_LOGOUT,
+          payload: res,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   });
 };

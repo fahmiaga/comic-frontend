@@ -1,22 +1,29 @@
 import React, { useState } from "react";
 import logo from "../../assets/logo/logo.png";
 import { useHistory } from "react-router-dom";
+import { postLogout } from "../../redux/actions/authAction";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
-  const [active, setActive] = useState(false);
+  // const [active, setActive] = useState(false);
 
-  const handleActive = () => {
-    setActive(false);
-  };
+  // const handleActive = () => {
+  //   setActive(false);
+  // };
 
   let history = useHistory();
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userData");
+  const dispatch = useDispatch();
 
-    history.push("/login");
-    window.location.reload(true);
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    dispatch(postLogout(token));
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("userData");
+
+    // history.push("/login");
+    // window.location.reload(true);
   };
 
   return (
