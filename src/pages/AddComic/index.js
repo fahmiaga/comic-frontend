@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import AdminNavbar from "../../components/AdminNavbar";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllComics } from "../../redux/actions/comicAction";
+import { getAllComics, deleteComic } from "../../redux/actions/comicAction";
 import { useHistory } from "react-router-dom";
 
 const AddComic = () => {
@@ -16,7 +16,9 @@ const AddComic = () => {
     dispatch(getAllComics(token));
   }, []);
 
-  console.log("komikk", comics);
+  const handleDelete = (id) => {
+    dispatch(deleteComic(id, token));
+  };
 
   return (
     <>
@@ -33,29 +35,39 @@ const AddComic = () => {
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Title</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colSpan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              {comics === undefined
+                ? "Loading.."
+                : comics.map((comic, i) => (
+                    <tr key={i}>
+                      <th scope="row">{i + 1}</th>
+                      <td>{comic.title}</td>
+                      <td>{comic.genre}</td>
+                      <td>
+                        <div
+                          className="badge bg-warning me-2"
+                          style={{ cursor: "pointer" }}
+                          onClick={() =>
+                            history.push(`/comic-edit-form/${comic.id}`)
+                          }
+                        >
+                          <i className="fas fa-edit"></i>
+                        </div>
+                        <div
+                          className="badge bg-danger"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleDelete(comic.id)}
+                        >
+                          <i className="fas fa-trash-alt"></i>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
             </tbody>
           </table>
         </div>

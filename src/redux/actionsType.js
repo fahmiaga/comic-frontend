@@ -6,3 +6,7 @@ export const GET_ALL_GENRES = "GET_ALL_GENRES";
 export const POST_GENRE = "POST_GENRE";
 export const DELETE_GENRE = "DELETE_GENRE";
 export const PUT_GENRE = "PUT_GENRE";
+export const POST_COMIC = "POST_COMIC";
+export const PUT_COMIC = "PUT_COMIC";
+export const DELETE_COMIC = "DELETE_COMIC";
+export const GET_COMIC_BY_ID = "GET_COMIC_BY_ID";

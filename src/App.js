@@ -9,6 +9,7 @@ import Admin from "./pages/Admin";
 import Register from "./pages/Register";
 import FormAddComic from "./pages/FormAddComic";
 import AddGenre from "./pages/AddGenre";
+import EditComic from "./pages/EditComic";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/add-comic" component={AddComic} />
           <Route path="/form-add-comic" component={FormAddComic} />
           <Route path="/add-genre" component={AddGenre} />
+          <Route path="/comic-edit-form/:id" component={EditComic} />
         </Switch>
       </BrowserRouter>
     </>

@@ -5,31 +5,37 @@ import Sidebar from "../../components/Sidebar";
 import img2 from "../../assets/img/img2.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGenres } from "../../redux/actions/genreAction";
-import { addComic } from "../../redux/actions/comicAction";
+import { getComicById, updateComic } from "../../redux/actions/comicAction";
+import { useParams } from "react-router-dom";
 
-const FormAddComic = () => {
+const EditComic = () => {
   const token = localStorage.getItem("token");
+  const { id } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    document.title = "Form Add Comic";
+    document.title = "Form Edit Comic";
     dispatch(getAllGenres(token));
-  }, []);
+    dispatch(getComicById(id, token));
+  }, [token, id, dispatch]);
 
-  const dispatch = useDispatch();
   const genres = useSelector((state) => state.genre.genres);
+  const message = useSelector((state) => state.comics.message);
+  const comic = useSelector((state) => state.comics.comic);
 
   const [imageData1, setImageData1] = useState(null);
   const [imageData2, setImageData2] = useState(null);
   const [image1, setImage1] = useState(img2);
   const [image2, setImage2] = useState(img2);
-  const [input, setInput] = useState({
-    title: "",
-    synopsis: "",
-    // comic_image: imageData1,
-    // drop_image: imageData2,
-    genre: "",
-  });
+  const [input, setInput] = useState({});
   const [disable, setDisable] = useState(false);
+
+  const handleChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const imageHandler1 = (e) => {
     const reader = new FileReader();
@@ -52,14 +58,24 @@ const FormAddComic = () => {
     setImageData2(e.target.files[0]);
   };
 
-  const handleChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
+  useEffect(() => {
+    if (comic.status === 200) {
+      setInput({
+        title: comic.comic.title,
+        synopsis: comic.comic.synopsis,
+        genre: comic.comic.genre,
+      });
+      if (message.status === 200) {
+        setDisable(false);
+      }
+
+      setImage1(comic.comic.comic_image);
+      setImage2(comic.comic.drop_image);
+    }
+  }, [comic, message]);
 
   const formData = new FormData();
+
   formData.append("title", input.title);
   formData.append("synopsis", input.synopsis);
   formData.append("genre", input.genre);
@@ -68,17 +84,9 @@ const FormAddComic = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addComic(token, formData));
     setDisable(true);
+    dispatch(updateComic(id, formData, token));
   };
-
-  const message = useSelector((state) => state.comics.message);
-
-  useEffect(() => {
-    if (message.status === 201) {
-      setDisable(false);
-    }
-  }, [message]);
 
   return (
     <>
@@ -102,6 +110,7 @@ const FormAddComic = () => {
                 aria-describedby="basic-addon1"
                 name="title"
                 onChange={handleChange}
+                value={input.title}
               />
               <div
                 id="validationServerUsernameFeedback"
@@ -121,6 +130,7 @@ const FormAddComic = () => {
                 aria-label="With textarea"
                 name="synopsis"
                 onChange={handleChange}
+                value={input.synopsis}
               ></textarea>
               <div
                 id="validationServerUsernameFeedback"
@@ -151,6 +161,7 @@ const FormAddComic = () => {
                     accept="image/*"
                     name="comic_image"
                     onChange={imageHandler1}
+                    // value={imageData1}
                   />
                   <div
                     id="validationServerUsernameFeedback"
@@ -200,6 +211,7 @@ const FormAddComic = () => {
                 id="inputGroupSelect01"
                 name="genre"
                 onChange={handleChange}
+                value={input.genre}
               >
                 <option>Choose your genre...</option>
                 {genres.map((genre, i) => (
@@ -221,4 +233,4 @@ const FormAddComic = () => {
   );
 };
 
-export default FormAddComic;
+export default EditComic;
