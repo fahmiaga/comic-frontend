@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { putGenre } from "../../redux/actions/genreAction";
+import { AddEpisode } from "../../redux/actions/episodeAction";
+import { useParams } from "react-router-dom";
 
-const Update = ({ id, genre, setBool }) => {
+const Insert = () => {
+  useEffect(() => {
+    document.title = "Add Genres";
+  }, []);
+
+  const { id } = useParams();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const [input, setInput] = useState({
-    genre: genre,
+    name: "",
   });
-
-  useEffect(() => {
-    setInput({ genre: genre });
-  }, [genre]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(AddEpisode(id, input, token));
+  };
 
   const handleChange = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(putGenre(id, input, token));
   };
 
   return (
@@ -37,12 +38,11 @@ const Update = ({ id, genre, setBool }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Genre"
+              placeholder="Episode Name"
               aria-label="Username"
               aria-describedby="basic-addon1"
-              name="genre"
+              name="name"
               onChange={handleChange}
-              value={input.genre}
             />
           </div>
           <button
@@ -52,22 +52,12 @@ const Update = ({ id, genre, setBool }) => {
               marginLeft: "5px",
             }}
           >
-            Update
+            Submit
           </button>
         </div>
-        <button
-          className="btn btn-danger "
-          style={{
-            height: "40px",
-            marginLeft: "5px",
-          }}
-          onClick={() => setBool(false)}
-        >
-          Cancel
-        </button>
       </form>
     </>
   );
 };
 
-export default Update;
+export default Insert;

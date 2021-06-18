@@ -2,18 +2,13 @@ import React, { useEffect, useState } from "react";
 import AdminNavbar from "../../components/AdminNavbar";
 import Sidebar from "../../components/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllGenres,
-  addGenre,
-  deleteGenre,
-  putGenre,
-} from "../../redux/actions/genreAction";
+import { getAllGenres, deleteGenre } from "../../redux/actions/genreAction";
 import Insert from "./insert";
 import Update from "./update";
 
 const AddGenre = () => {
   const genres = useSelector((state) => state.genre.genres);
-  const message = useSelector((state) => state.genre.message);
+  // const message = useSelector((state) => state.genre.message);
   const token = localStorage.getItem("token");
   const [genre, setGenre] = useState("");
   const [bool, setBool] = useState(false);

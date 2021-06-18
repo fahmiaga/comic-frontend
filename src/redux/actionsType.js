@@ -10,3 +10,6 @@ export const POST_COMIC = "POST_COMIC";
 export const PUT_COMIC = "PUT_COMIC";
 export const DELETE_COMIC = "DELETE_COMIC";
 export const GET_COMIC_BY_ID = "GET_COMIC_BY_ID";
+export const GET_EPISODES_BY_COMIC_ID = "GET_EPISODES_BY_COMIC_ID";
+export const POST_EPISODE = "POST_EPISODE";
+export const PUT_EPISODE = "PUT_EPISODE";

@@ -10,6 +10,8 @@ import Register from "./pages/Register";
 import FormAddComic from "./pages/FormAddComic";
 import AddGenre from "./pages/AddGenre";
 import EditComic from "./pages/EditComic";
+import AddEpisodes from "./pages/addEpisodes";
+import ListEpisodes from "./pages/ListEpisodes";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/form-add-comic" component={FormAddComic} />
           <Route path="/add-genre" component={AddGenre} />
           <Route path="/comic-edit-form/:id" component={EditComic} />
+          <Route path="/add-episodes" component={AddEpisodes} />
+          <Route path="/list-episodes/:id" component={ListEpisodes} />
         </Switch>
       </BrowserRouter>
     </>

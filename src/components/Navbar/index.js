@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../../assets/logo/logo.png";
 import { useHistory } from "react-router-dom";
 import { postLogout } from "../../redux/actions/authAction";

@@ -1,36 +1,30 @@
-import React, { useEffect } from "react";
-import Sidebar from "../../components/Sidebar";
+import React from "react";
 import AdminNavbar from "../../components/AdminNavbar";
-import { useSelector, useDispatch } from "react-redux";
-import { getAllComics, deleteComic } from "../../redux/actions/comicAction";
+import Sidebar from "../../components/Sidebar";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllComics } from "../../redux/actions/comicAction";
 import { useHistory } from "react-router-dom";
 
-const AddComic = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const comics = useSelector((state) => state.comics.comics);
+const AddEpisodes = () => {
   const token = localStorage.getItem("token");
+  const comics = useSelector((state) => state.comics.comics);
+  const history = useHistory();
 
   useEffect(() => {
-    document.title = "Add Comic";
+    document.title = "Add Episodes";
     dispatch(getAllComics(token));
-  }, [dispatch, token]);
+  }, []);
 
-  const handleDelete = (id) => {
-    dispatch(deleteComic(id, token));
-  };
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {};
 
   return (
     <>
       <AdminNavbar />
       <div className="admin-comic-container">
         <div className="content-comic-container">
-          <button
-            className="btn btn-primary mb-2"
-            onClick={() => history.push("/form-add-comic")}
-          >
-            Add New Comic
-          </button>
           <table className="table table-hover">
             <thead>
               <tr>
@@ -50,20 +44,13 @@ const AddComic = () => {
                       <td>{comic.genre}</td>
                       <td>
                         <div
-                          className="badge bg-warning me-2"
+                          className="badge bg-info me-2"
                           style={{ cursor: "pointer" }}
                           onClick={() =>
-                            history.push(`/comic-edit-form/${comic.id}`)
+                            history.push(`/list-episodes/${comic.id}`)
                           }
                         >
-                          <i className="fas fa-edit"></i>
-                        </div>
-                        <div
-                          className="badge bg-danger"
-                          style={{ cursor: "pointer" }}
-                          onClick={() => handleDelete(comic.id)}
-                        >
-                          <i className="fas fa-trash-alt"></i>
+                          <i className="fas fa-info-circle"></i>
                         </div>
                       </td>
                     </tr>
@@ -77,4 +64,4 @@ const AddComic = () => {
   );
 };
 
-export default AddComic;
+export default AddEpisodes;

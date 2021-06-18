@@ -1,5 +1,5 @@
 import axios from "axios";
-import apiClient from "../actions/api";
+// import apiClient from "../actions/api";
 
 import { POST_REGISTER, POST_LOGOUT, POST_LOGIN } from "../actionsType";
 
