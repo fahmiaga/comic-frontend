@@ -9,13 +9,13 @@ import { addComic } from "../../redux/actions/comicAction";
 
 const FormAddComic = () => {
   const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.title = "Form Add Comic";
     dispatch(getAllGenres(token));
-  }, []);
+  }, [dispatch, token]);
 
-  const dispatch = useDispatch();
   const genres = useSelector((state) => state.genre.genres);
 
   const [imageData1, setImageData1] = useState(null);
@@ -30,6 +30,8 @@ const FormAddComic = () => {
     genre: "",
   });
   const [disable, setDisable] = useState(false);
+
+  const message = useSelector((state) => state.comics.message);
 
   const imageHandler1 = (e) => {
     const reader = new FileReader();
@@ -71,8 +73,6 @@ const FormAddComic = () => {
     dispatch(addComic(token, formData));
     setDisable(true);
   };
-
-  const message = useSelector((state) => state.comics.message);
 
   useEffect(() => {
     if (message.status === 201) {

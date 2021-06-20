@@ -34,11 +34,17 @@ const Sidebar = () => {
           >
             <i className="fab fa-buffer"></i> <p>Add Episodes</p>
           </div>
-          <div className="admin-list">
-            <i className="far fa-calendar-alt"></i> <p>Add Schedule</p>
-          </div>
-          <div className="admin-list">
+          <div
+            className="admin-list"
+            onClick={() => history.push("/add-content")}
+          >
             <i className="far fa-images"></i> <p>Add Content</p>
+          </div>
+          <div
+            className="admin-list"
+            onClick={() => history.push("/add-schedule")}
+          >
+            <i className="far fa-calendar-alt"></i> <p>Add Schedule</p>
           </div>
         </div>
       </div>

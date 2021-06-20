@@ -1,0 +1,44 @@
+@import "../Variables/Colors";
+
+.schedule-button-wrapper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .days-button {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    background-color: aqua;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1;
+
+    &:after {
+      content: "";
+      width: 200px;
+      height: 50px;
+      background-color: $black;
+      opacity: 0.5;
+      position: absolute;
+      bottom: 0;
+      border-radius: 5px;
+      z-index: -1;
+      transition: 0.3s;
+    }
+    &:hover:after {
+      opacity: 0.6;
+    }
+
+    > p {
+      color: $white;
+      text-align: center;
+      line-height: 50px;
+    }
+  }
+}

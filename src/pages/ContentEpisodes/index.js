@@ -2,21 +2,20 @@ import React, { useEffect } from "react";
 import AdminNavbar from "../../components/AdminNavbar";
 import Sidebar from "../../components/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllComics } from "../../redux/actions/comicAction";
-import { useHistory } from "react-router-dom";
+import { getEpisodeByComicId } from "../../redux/actions/episodeAction";
+import { useParams, useHistory } from "react-router-dom";
 
-const AddContent = () => {
-  const dispatch = useDispatch();
+const ContentEpisode = () => {
+  const { id } = useParams();
   const token = localStorage.getItem("token");
-  const comics = useSelector((state) => state.comics.comics);
+  const dispatch = useDispatch();
+  const episodes = useSelector((state) => state.episode.episodes);
   const history = useHistory();
 
   useEffect(() => {
-    document.title = "Add Content";
-    dispatch(getAllComics(token));
-  }, [dispatch, token]);
-
-  // console.log(comics);
+    document.title = "Content Episode";
+    dispatch(getEpisodeByComicId(id, token));
+  }, [dispatch, id, token]);
 
   return (
     <>
@@ -28,28 +27,26 @@ const AddContent = () => {
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Genre</th>
+                <th scope="col">Name</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              {comics === undefined
-                ? "Loading.."
-                : comics.map((comic, i) => (
+              {episodes === undefined
+                ? "Loading..."
+                : episodes.map((episode, i) => (
                     <tr key={i}>
                       <th scope="row">{i + 1}</th>
-                      <td>{comic.title}</td>
-                      <td>{comic.genre}</td>
+                      <td>{episode.name}</td>
                       <td>
                         <div
-                          className="badge bg-info me-2"
+                          className="badge bg-primary me-2"
                           style={{ cursor: "pointer" }}
                           onClick={() =>
-                            history.push(`/content-episodes/${comic.id}`)
+                            history.push(`/list-content/${episode.id_episode}`)
                           }
                         >
-                          <i className="fas fa-info-circle"></i>
+                          <i className="fas fa-angle-double-right"></i>
                         </div>
                       </td>
                     </tr>
@@ -64,4 +61,4 @@ const AddContent = () => {
   );
 };
 
-export default AddContent;
+export default ContentEpisode;
