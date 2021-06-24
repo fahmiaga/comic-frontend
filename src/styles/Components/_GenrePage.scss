@@ -36,4 +36,10 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
+  .genre-active {
+    background-color: $yellowgreen;
+    color: $greywhite;
+    font-weight: 900;
+  }
 }

@@ -6,8 +6,10 @@ const Footer = () => {
 
   return (
     <>
-      <div className="comic-footer">
-        <p>Mangalime &copy; {year}</p>
+      <div className="footer-container">
+        <div className="comic-footer">
+          <p>Mangalime &copy; {year}</p>
+        </div>
       </div>
     </>
   );

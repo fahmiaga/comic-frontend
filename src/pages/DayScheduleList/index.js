@@ -120,7 +120,7 @@ const DayScheduleList = () => {
                       <td>
                         <button
                           className="badge bg-danger"
-                          onClick={() => handleDelete(schedule.id)}
+                          onClick={() => handleDelete(schedule.id_schedule)}
                         >
                           <i className="fas fa-trash-alt"></i>
                         </button>

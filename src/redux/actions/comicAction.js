@@ -6,6 +6,8 @@ import {
   DELETE_COMIC,
   GET_COMIC_BY_ID,
   PUT_COMIC,
+  GET_COMICS_BY_GENRE,
+  POST_RATING,
 } from "../actionsType";
 import Swal from "sweetalert2";
 
@@ -20,10 +22,10 @@ export const getAllComics = (token) => (dispatch) => {
   axios
     .get(`${Api}/comics`, config)
     .then((res) => {
-      // console.log("comics", res);
+      // console.log(res.data.data.reverse());
       dispatch({
         type: GET_ALL_COMICS,
-        payload: res.data.data,
+        payload: res.data.data.reverse(),
       });
     })
     .catch((err) => {
@@ -146,7 +148,6 @@ export const updateComic = (id, formData, token) => (dispatch) => {
     axios
       .post(`${Api}/comics/${id}`, formData, config)
       .then((res) => {
-        console.log(res);
         dispatch(getAllComics(token));
         dispatch({
           type: PUT_COMIC,
@@ -167,6 +168,57 @@ export const updateComic = (id, formData, token) => (dispatch) => {
         console.log(err);
         dispatch({
           type: PUT_COMIC,
+          payload: {
+            message: err.response.data,
+            status: err.response.status,
+          },
+        });
+      });
+  });
+};
+
+export const getComicByGenre = (genre, token) => (dispatch) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  // apiClient.get("sanctum/csrf-cookie").then((response) => {
+  axios
+    .get(`${Api}/comics/get-comics-genre/${genre}`, config)
+    .then((res) => {
+      // console.log("genreeeeeee", genre);
+      // console.log("okee", res.data);
+      dispatch({
+        type: GET_COMICS_BY_GENRE,
+        payload: res.data.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  // })
+};
+
+export const addRating = (id, input, token) => (dispatch) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  axios.defaults.withCredentials = true;
+  axios.get("http://localhost:8000/sanctum/csrf-cookie").then((response) => {
+    axios
+      .post(`${Api}/rate/${id}`, input, config)
+      .then((res) => {
+        // console.log("rating =>", res);
+        dispatch(getComicById(id, token));
+        dispatch({
+          type: POST_RATING,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+        dispatch({
+          type: POST_RATING,
           payload: {
             message: err.response.data,
             status: err.response.status,

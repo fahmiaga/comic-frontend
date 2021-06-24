@@ -10,15 +10,14 @@ const AddEpisodes = () => {
   const token = localStorage.getItem("token");
   const comics = useSelector((state) => state.comics.comics);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.title = "Add Episodes";
     dispatch(getAllComics(token));
-  }, []);
+  }, [dispatch, token]);
 
-  const dispatch = useDispatch();
-
-  const handleDelete = () => {};
+  // const handleDelete = () => {};
 
   return (
     <>

@@ -32,7 +32,7 @@ const Insert = () => {
         <div className="input-add-wrapper">
           <div className="input-group mb-3 mt-5 input-width">
             <span className="input-group-text" id="basic-addon1">
-              Genre
+              Name
             </span>
 
             <input

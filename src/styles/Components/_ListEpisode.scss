@@ -1,0 +1,124 @@
+@import "../Variables/Colors";
+
+.list-episode-container {
+  // width: 100%;
+  // height: 600px;
+  // background-color: aquamarine;
+  position: relative;
+  z-index: 1;
+
+  @include for-size(phone) {
+    z-index: -1;
+  }
+
+  .synopsis-list-wrapper {
+    width: 76%;
+    height: auto;
+    margin: auto;
+    // background-color: aqua;
+    display: flex;
+    position: absolute;
+    top: -70px;
+    left: 12%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    @include for-size(phone) {
+      top: 0;
+      left: 2%;
+      width: 96%;
+    }
+
+    .list-episode {
+      width: 70%;
+      height: auto;
+      background-color: $white;
+      border-right: 2px solid $grey3;
+
+      @include for-size(phone) {
+        width: 100%;
+        border: none;
+      }
+
+      .episode-button {
+        width: 90%;
+        height: 70px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $grey3;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $grey6;
+        }
+
+        > p {
+          padding-left: 30px;
+        }
+
+        .episode-date-number {
+          width: 250px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          @include for-size(phone) {
+            width: 150px;
+          }
+
+          > p {
+            color: $grey2;
+          }
+
+          > i {
+            padding-bottom: 15px;
+          }
+        }
+      }
+
+      .list-episode-info-wrapper {
+        text-align: center;
+        margin-top: 10px;
+        font-weight: 900;
+      }
+    }
+    .synopsis-list-episode {
+      width: 30%;
+      height: auto;
+      background-color: $white;
+
+      @include for-size(phone) {
+        display: none;
+      }
+
+      > h5 {
+        text-align: center;
+        padding-top: 10px;
+      }
+
+      .comic-info-synopsis {
+        width: 80%;
+        height: auto;
+        margin: 20px auto;
+
+        .synopsis-content {
+          overflow: hidden;
+          height: auto;
+        }
+        > button {
+          width: 100%;
+          height: 40px;
+          border: none;
+          background-color: $younggreen;
+          border-radius: 20px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $yellowgreen;
+          }
+        }
+      }
+    }
+  }
+}

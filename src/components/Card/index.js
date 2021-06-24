@@ -1,8 +1,15 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const Card = (props) => {
+  const history = useHistory();
+
+  // console.log("comic", props);
   return (
-    <div className="comic-card">
+    <div
+      className="comic-card"
+      onClick={() => history.push(`/comic-info/${props.id}`)}
+    >
       <img src={props.image} alt="" />
       <div className="comic-title">
         <h6>{props.title}</h6>

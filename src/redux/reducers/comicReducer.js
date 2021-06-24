@@ -1,9 +1,17 @@
-import { GET_ALL_COMICS, POST_COMIC, GET_COMIC_BY_ID } from "../actionsType";
+import {
+  GET_ALL_COMICS,
+  POST_COMIC,
+  GET_COMIC_BY_ID,
+  GET_COMICS_BY_GENRE,
+  POST_RATING,
+} from "../actionsType";
 
 const initialState = {
   comics: [],
   comic: "",
+  rating: "",
   message: "",
+  comicG: [],
 };
 
 const comicReducer = (state = initialState, action) => {
@@ -23,6 +31,16 @@ const comicReducer = (state = initialState, action) => {
       return {
         ...state,
         comic: payload,
+      };
+    case GET_COMICS_BY_GENRE:
+      return {
+        ...state,
+        comicG: payload,
+      };
+    case POST_RATING:
+      return {
+        ...state,
+        rating: payload,
       };
     default:
       return state;

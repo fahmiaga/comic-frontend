@@ -18,6 +18,7 @@ export const getEpisodeByComicId = (id, token) => (dispatch) => {
   axios
     .get(`${Api}/episode/${id}`, config)
     .then((res) => {
+      console.log(res);
       dispatch({
         type: GET_EPISODES_BY_COMIC_ID,
         payload: res.data.data,

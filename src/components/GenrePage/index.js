@@ -1,100 +1,61 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card2 from "../../components/Card2";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllGenres } from "../../redux/actions/genreAction";
+import { getComicByGenre } from "../../redux/actions/comicAction";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const GenrePage = () => {
-  const genres = [
-    "Action",
-    "Horror",
-    "Comedy",
-    "Romantic",
-    "Drama",
-    "Thriller",
-  ];
+  const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
+  const genres = useSelector((state) => state.genre.genres);
+  const comics = useSelector((state) => state.comics.comicG);
+  // const comicAll =
+  const [active, setActive] = useState("");
+  const location = useLocation();
+  const states = location.state === undefined ? "Comedy" : location.state;
 
-  const data = [
-    {
-      title: "Naruto",
-      description:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa. aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa",
-      image:
-        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2a6bf3c3-ed4e-4d52-85b6-2692a3b8eeac/db0mv0x-c384c1d8-83b1-46ac-818c-6d9e48bd1f96.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJhNmJmM2MzLWVkNGUtNGQ1Mi04NWI2LTI2OTJhM2I4ZWVhY1wvZGIwbXYweC1jMzg0YzFkOC04M2IxLTQ2YWMtODE4Yy02ZDllNDhiZDFmOTYuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Lq3DoFywlo7yEnba1PjFGv-2yUtkPqUGd-tsad769H4",
-      genre: "Action",
-      rating: "4.5",
-    },
-    {
-      title: "One Piece",
-      description:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, ",
-      image:
-        "https://i.pinimg.com/originals/46/4c/36/464c362413cd05a572850891b568d648.png",
-      genre: "Horror",
-      rating: "4",
-    },
-    {
-      title: "Attack on Titan",
-      description:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate",
-      image:
-        "https://images-na.ssl-images-amazon.com/images/I/510nRVPG%2BAL._AC_.jpg",
-      genre: "Action",
-      rating: "4",
-    },
-    {
-      title: "One Punch Man",
-      description:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque ",
-      image:
-        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c387cb2d-7107-497b-864c-f64b491d42fd/das4tbr-e3efa0f7-233c-4f77-8630-24fcbc6463d1.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MzODdjYjJkLTcxMDctNDk3Yi04NjRjLWY2NGI0OTFkNDJmZFwvZGFzNHRici1lM2VmYTBmNy0yMzNjLTRmNzctODYzMC0yNGZjYmM2NDYzZDEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.zF_r13XD9p2YHiJhF5UaFpe-Vg0a5XJGSTdnLZ_7o-4",
-      genre: "Comedy",
-      rating: "4.5",
-    },
-    {
-      title: "Bleach",
-      description:
-        " deleniti sunt fuga culpa. aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa",
-      image:
-        "https://i.pinimg.com/736x/83/77/b9/8377b9b73ebdd25f6aadde028dd65643.jpg",
-      genre: "Comedy",
-      rating: "4.5",
-    },
-    {
-      title: "Fairy Tail",
-      description:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa. aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, ",
-      image: "https://i.kym-cdn.com/photos/images/facebook/000/969/362/1db.jpg",
-      genre: "Horror",
-      rating: "4.5",
-    },
-    {
-      title: "Fullmetal Alchemist",
-      description:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam dolorem aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa. aspernatur iure dicta non ipsum saepe maiores reiciendis? Eaque molestiae cupiditate, deleniti sunt fuga culpa",
-      image:
-        "https://www.gamulator.com/img/roms/fullmetal-alchemist-trading-card-game-ds-cover-xenophobia.jpg",
-      genre: "Action",
-      rating: "4.5",
-    },
-  ];
+  useEffect(() => {
+    dispatch(getAllGenres(token));
+    dispatch(getComicByGenre(states, token));
+  }, [dispatch, states, token]);
+
+  const handleClick = (genre) => {
+    dispatch(getComicByGenre(genre, token));
+    setActive(genre);
+  };
+  // console.log("genress =>", states);
 
   return (
     <>
       <div className="comic-genre-page-container">
         <div className="comic-genre-page">
+          {/* <div className="genre-button">All</div> */}
           {genres.map((genre, i) => (
-            <div className="genre-button" key={i}>
-              {genre}
+            <div
+              className={
+                active === genre.genre
+                  ? "genre-button genre-active"
+                  : "genre-button"
+              }
+              key={i}
+              onClick={() => handleClick(genre.genre)}
+            >
+              {genre.genre}
             </div>
           ))}
         </div>
         <div className="comics-genre-page">
-          {data.reverse().map((comic, i) => (
+          {comics.reverse().map((comic, i) => (
             <Card2
               key={i}
               title={comic.title}
-              description={comic.description}
-              image={comic.image}
+              description={comic.synopsis}
+              image={comic.comic_image}
               genre={comic.genre}
               rating={comic.rating}
+              id={comic.id}
             />
           ))}
         </div>
