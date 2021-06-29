@@ -20,6 +20,7 @@ import EditContent from "./pages/EditContent";
 import AddSchedule from "./pages/AddSchedule";
 import DayScheduleList from "./pages/DayScheduleList";
 import ComicInfo from "./pages/ComicInfo";
+import ComicContent from "./pages/ComicContent";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="/add-schedule" component={AddSchedule} />
           <Route path="/comic-schedule/:id" component={DayScheduleList} />
           <Route path="/comic-info/:id" component={ComicInfo} />
+          <Route path="/content/:id" component={ComicContent} />
         </Switch>
       </BrowserRouter>
     </>

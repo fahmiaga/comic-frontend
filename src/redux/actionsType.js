@@ -21,3 +21,7 @@ export const GET_DAYS = "GET_DAYS";
 export const GET_SCHEDULE = "GET_SCHEDULE";
 export const POST_SCHEDULE = "POST_SCHEDULE";
 export const POST_RATING = "POST_RATING";
+export const GET_COMMENT_BY_ID_EPISODE = "GET_COMMENT_BY_ID_EPISODE";
+export const POST_COMMENT = "POST_COMMENT";
+export const POST_PROFILE = "POST_PROFILE";
+export const GET_USER_PROFILE = "GET_USER_PROFILE";

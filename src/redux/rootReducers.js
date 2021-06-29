@@ -5,6 +5,7 @@ import genreReducer from "./reducers/genreReducer";
 import episodeReducer from "./reducers/episodeReducer";
 import contentReducer from "./reducers/contentReducer";
 import scheduleReducer from "./reducers/scheduleReducer";
+import commentReducer from "./reducers/commentReducer";
 
 export default combineReducers({
   comics: comicReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   episode: episodeReducer,
   content: contentReducer,
   day: scheduleReducer,
+  comment: commentReducer,
 });

@@ -92,7 +92,7 @@ const LoginC = () => {
           </div>
         </form>
         <p>
-          Don't have account? Click
+          Don't have an account? Click
           <span onClick={() => history.push("/register")}> here</span> to
           register
         </p>

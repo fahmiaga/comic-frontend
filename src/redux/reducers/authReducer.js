@@ -1,8 +1,15 @@
-import { POST_LOGIN, POST_REGISTER, POST_LOGOUT } from "../actionsType";
+import {
+  POST_LOGIN,
+  POST_REGISTER,
+  POST_LOGOUT,
+  GET_USER_PROFILE,
+  POST_PROFILE,
+} from "../actionsType";
 
 const initialState = {
   signIn: "",
   message: "",
+  user: "",
 };
 
 const authReducer = (state = initialState, action) => {
@@ -22,6 +29,16 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         message: payload,
+      };
+    case POST_PROFILE:
+      return {
+        ...state,
+        message: payload,
+      };
+    case GET_USER_PROFILE:
+      return {
+        ...state,
+        user: payload,
       };
     default:
       return state;

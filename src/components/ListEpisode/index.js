@@ -6,6 +6,7 @@ import { useParams, useHistory } from "react-router-dom";
 const ListEpisode = (comic) => {
   const dispatch = useDispatch();
   const eps = useSelector((state) => state.episode.episodes);
+
   const token = localStorage.getItem("token");
   const { id } = useParams();
   const history = useHistory();
@@ -14,7 +15,7 @@ const ListEpisode = (comic) => {
     dispatch(getEpisodeByComicId(id, token));
   }, [dispatch, id, token]);
 
-  console.log("episode =>", comic);
+  // console.log("episode =>", comic);
 
   return (
     <>
@@ -25,7 +26,11 @@ const ListEpisode = (comic) => {
               <p>MANGALIME</p>
             </div>
             {eps.reverse().map((episode, i) => (
-              <div className="episode-button" key={i}>
+              <div
+                className="episode-button"
+                key={i}
+                onClick={() => history.push(`/content/${episode.id_episode}`)}
+              >
                 <p>{episode.name}</p>
                 <div className="episode-date-number">
                   <p>

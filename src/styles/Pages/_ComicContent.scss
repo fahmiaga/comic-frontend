@@ -1,0 +1,10 @@
+@import "../Variables/Colors";
+
+.content-comic-container {
+  width: 90%;
+  margin: auto;
+
+  > img {
+    width: 90%;
+  }
+}

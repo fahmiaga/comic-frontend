@@ -1,9 +1,16 @@
 import axios from "axios";
 // import apiClient from "../actions/api";
 
-import { POST_REGISTER, POST_LOGOUT, POST_LOGIN } from "../actionsType";
+import {
+  POST_REGISTER,
+  POST_LOGOUT,
+  POST_LOGIN,
+  POST_PROFILE,
+  GET_USER_PROFILE,
+} from "../actionsType";
 
 const Api = `http://localhost:8000/api`;
+const csrf = `http://localhost:8000`;
 
 export const postLogin = (userData) => (dispatch) => {
   const config = {
@@ -13,7 +20,7 @@ export const postLogin = (userData) => (dispatch) => {
     },
   };
   axios.defaults.withCredentials = true;
-  axios.get("http://localhost:8000/sanctum/csrf-cookie").then((response) => {
+  axios.get(`${csrf}/sanctum/csrf-cookie`).then((response) => {
     axios
       .post(`${Api}/login`, userData, config)
       .then((res) => {
@@ -43,7 +50,7 @@ export const postRegister = (userData) => (dispatch) => {
     },
   };
   axios.defaults.withCredentials = true;
-  axios.get("http://localhost:8000/sanctum/csrf-cookie").then((response) => {
+  axios.get(`${csrf}/sanctum/csrf-cookie`).then((response) => {
     axios
       .post(`${Api}/register`, userData, config)
       .then((res) => {
@@ -63,23 +70,65 @@ export const postRegister = (userData) => (dispatch) => {
       });
   });
 };
+
 export const postLogout = (token) => (dispatch) => {
   const config = {
     headers: { Authorization: "Bearer " + token },
   };
 
-  console.log(config);
-
   // apiClient.get("sanctum/csrf-cookie").then((response) => {
   axios.defaults.withCredentials = true;
-  axios.get("http://localhost:8000/sanctum/csrf-cookie").then((response) => {
+  axios.get(`${csrf}/sanctum/csrf-cookie`).then((response) => {
     axios
-      .post(`${Api}/logout`, config)
+      .delete(`${Api}/logout`, config)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: POST_LOGOUT,
           payload: res,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+};
+
+export const updateProfile = (formData, token) => (dispatch) => {
+  const config = {
+    headers: { Authorization: "Bearer " + token },
+  };
+
+  // apiClient.get("sanctum/csrf-cookie").then((response) => {
+  axios.defaults.withCredentials = true;
+  axios.get(`${csrf}/sanctum/csrf-cookie`).then((response) => {
+    axios
+      .post(`${Api}/update-profile`, formData, config)
+      .then((res) => {
+        localStorage.setItem("userdata", JSON.stringify(res.data.data));
+        dispatch({
+          type: POST_PROFILE,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+};
+
+export const getUserById = (id, token) => (dispatch) => {
+  const config = {
+    headers: { Authorization: "Bearer " + token },
+  };
+
+  axios.defaults.withCredentials = true;
+  axios.get(`${csrf}/sanctum/csrf-cookie`).then((response) => {
+    axios
+      .get(`${Api}/user/${id}`, config)
+      .then((res) => {
+        dispatch({
+          type: GET_USER_PROFILE,
+          payload: res.data.data,
         });
       })
       .catch((err) => {

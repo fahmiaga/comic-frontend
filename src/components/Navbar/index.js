@@ -10,26 +10,33 @@ const Navbar = () => {
   // const handleActive = () => {
   //   setActive(false);
   // };
+  const imgProfile =
+    "http://lexaquiliabd.com/wp-content/uploads/2017/10/ATbrxjpyc.jpg";
 
   let history = useHistory();
 
   const dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("userdata"));
 
   const handleLogout = () => {
     dispatch(postLogout(token));
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("userData");
+    localStorage.removeItem("token");
+    localStorage.removeItem("userData");
 
-    // history.push("/login");
-    // window.location.reload(true);
+    history.push("/login");
+    window.location.reload(true);
   };
 
   return (
     <>
       <div className="navbar-container">
         <img src={logo} alt="" onClick={() => history.push("/")} />
+        <div className="search-navbar">
+          <input type="text" placeholder="Search keyword..." />
+          <i className="fas fa-search"></i>
+        </div>
         <div className="link-list">
           <ul>
             <li onClick={() => history.push("/genres")}>Genres</li>
@@ -37,7 +44,11 @@ const Navbar = () => {
             <li>
               {/* <div className="dropdown"></div> */}
               <img
-                src="http://lexaquiliabd.com/wp-content/uploads/2017/10/ATbrxjpyc.jpg"
+                src={
+                  user.profile_image === "default.jpg"
+                    ? imgProfile
+                    : user.profile_image
+                }
                 alt=""
                 className="dropdown-toggle"
                 id="dropdownMenu2"

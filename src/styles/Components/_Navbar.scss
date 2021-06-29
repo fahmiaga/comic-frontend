@@ -9,6 +9,34 @@
   justify-content: space-between;
   align-items: center;
 
+  .search-navbar {
+    max-width: 400px;
+    height: 40px;
+    border: 1px solid $grey2;
+    border-radius: 10px;
+    > input {
+      width: 90%;
+      border: none;
+    }
+    > i {
+      width: 10%;
+      height: 38px;
+      border-bottom-right-radius: 10px;
+      border-top-right-radius: 10px;
+      line-height: 40px;
+      text-align: center;
+      background-color: $younggreen;
+      color: $white;
+    }
+
+    // @include for-size(tablet) {
+    //   width: 10px;
+    // }
+    @include for-size(phone) {
+      display: none;
+    }
+  }
+
   @include for-size(phone) {
     position: fixed;
     display: inline-block;
@@ -24,9 +52,10 @@
     padding-bottom: 20px;
     cursor: pointer;
 
-    @include for-size(tablet) {
-      margin-left: 30px;
-    }
+    // @include for-size(tablet) {
+    //   margin-left: 30px;
+    //   display: none;
+    // }
     @include for-size(phone) {
       display: none;
     }
