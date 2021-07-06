@@ -60,7 +60,7 @@ const Navbar = () => {
 //             {user.role_id !== 1 ? (
 //               ""
 //             ) : (
-//               <li onClick={() => history.push("/add-comic")}>Admin Page</li>
+              <li onClick={() => history.push("/add-comic")}>Admin Page</li>
 //             )}
 
             <li onClick={() => history.push("/genres")}>Genres</li>
