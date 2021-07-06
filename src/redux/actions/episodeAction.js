@@ -7,7 +7,7 @@ import {
 } from "../actionsType";
 import Swal from "sweetalert2";
 
-const Api = `https://mangalime.herokuapp.com/api`;
+const Api = `https://mangalime-endpoint.herokuapp.com/api`;
 
 export const getEpisodeByComicId = (id, token) => (dispatch) => {
   const config = {
@@ -35,7 +35,7 @@ export const AddEpisode = (id, input, token) => (dispatch) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.get("https://mangalime.herokuapp.com/sanctum/csrf-cookie").then((response) => {
+  axios.get("https://mangalime-endpoint.herokuapp.com/sanctum/csrf-cookie").then((response) => {
     axios
       .post(`${Api}/episode/${id}`, input, config)
       .then((res) => {
@@ -67,7 +67,7 @@ export const UpdateEpisode = (id, idepisode, input, token) => (dispatch) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.get("https://mangalime.herokuapp.com/sanctum/csrf-cookie").then((response) => {
+  axios.get("https://mangalime-endpoint.herokuapp.com/sanctum/csrf-cookie").then((response) => {
     axios
       .put(`${Api}/episode/${idepisode}`, input, config)
       .then((res) => {
@@ -99,7 +99,7 @@ export const deleteEpisode = (id, idepisode, token) => (dispatch) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.get("https://mangalime.herokuapp.com/sanctum/csrf-cookie").then((response) => {
+  axios.get("https://mangalime-endpoint.herokuapp.com/sanctum/csrf-cookie").then((response) => {
     axios
       .delete(`${Api}/episode/${idepisode}`, config)
       .then((res) => {
