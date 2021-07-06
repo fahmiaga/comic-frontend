@@ -57,7 +57,7 @@ const Navbar = () => {
         </div>
         <div className="link-list">
           <ul>
-            {user.role_id !== 1 ? (
+            {user.role_id === null && user.role_id !== 1 ? (
               ""
             ) : (
               <li onClick={() => history.push("/add-comic")}>Admin Page</li>
