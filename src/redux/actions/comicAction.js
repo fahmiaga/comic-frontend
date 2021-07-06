@@ -12,7 +12,7 @@ import {
 } from "../actionsType";
 import Swal from "sweetalert2";
 
-const Api = `http://localhost:8000/api`;
+const Api = `https://mangalime.herokuapp.com`;
 
 export const getAllComics = (token) => (dispatch) => {
   const config = {
@@ -65,7 +65,7 @@ export const addComic = (token, formData) => (dispatch) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.get("http://localhost:8000/sanctum/csrf-cookie").then((response) => {
+  axios.get("https://mangalime.herokuapp.com/sanctum/csrf-cookie").then((response) => {
     axios
       .post(`${Api}/comics`, formData, config)
       .then((res) => {
@@ -112,7 +112,7 @@ export const deleteComic = (id, token) => (dispatch) => {
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
     axios.defaults.withCredentials = true;
-    axios.get("http://localhost:8000/sanctum/csrf-cookie").then((response) => {
+    axios.get("https://mangalime.herokuapp.com/sanctum/csrf-cookie").then((response) => {
       axios
         .delete(`${Api}/comics/${id}`, config)
         .then((res) => {
@@ -145,7 +145,7 @@ export const updateComic = (id, formData, token) => (dispatch) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.get("http://localhost:8000/sanctum/csrf-cookie").then((response) => {
+  axios.get("https://mangalime.herokuapp.com/sanctum/csrf-cookie").then((response) => {
     axios
       .post(`${Api}/comics/${id}`, formData, config)
       .then((res) => {
@@ -205,7 +205,7 @@ export const addRating = (id, input, token) => (dispatch) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.get("http://localhost:8000/sanctum/csrf-cookie").then((response) => {
+  axios.get("https://mangalime.herokuapp.com/sanctum/csrf-cookie").then((response) => {
     axios
       .post(`${Api}/rate/${id}`, input, config)
       .then((res) => {
