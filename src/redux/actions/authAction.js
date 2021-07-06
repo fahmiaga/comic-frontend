@@ -9,8 +9,8 @@ import {
   GET_USER_PROFILE,
 } from "../actionsType";
 
-const Api = `http://localhost:8000/api`;
-const csrf = `http://localhost:8000`;
+const Api = `https://mangalime-endpoint.herokuapp.com/api`;
+const csrf = `https://mangalime-endpoint.herokuapp.com`;
 
 export const postLogin = (userData) => (dispatch) => {
   const config = {
