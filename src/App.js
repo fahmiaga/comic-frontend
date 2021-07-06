@@ -27,12 +27,12 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/" component={Login} />
           <Route path="/update-profile" component={UpdateProfie} />
           <Route path="/schedules" component={Schedules} />
           <Route path="/genres" component={Genres} />
           <Route path="/admin" component={Admin} />
-          <Route path="/login" component={Login} />
+          <Route path="/landing-page" component={LandingPage} />
           <Route path="/register" component={Register} />
           <Route path="/add-comic" component={AddComic} />
           <Route path="/form-add-comic" component={FormAddComic} />
