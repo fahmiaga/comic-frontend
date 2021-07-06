@@ -6,7 +6,7 @@ import {
   PUT_GENRE,
 } from "../actionsType";
 import Swal from "sweetalert2";
-const Api = `https://mangalime.herokuapp.com/api`;
+const Api = `https://mangalime-endpoint.herokuapp.com/api`;
 
 export const getAllGenres = (token) => (dispatch) => {
   const config = {
@@ -31,7 +31,7 @@ export const addGenre = (input, token) => (dispatch) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.get("https://mangalime.herokuapp.com/sanctum/csrf-cookie").then((response) => {
+  axios.get("https://mangalime-endpoint.herokuapp.com/sanctum/csrf-cookie").then((response) => {
     axios
       .post(`${Api}/genre`, input, config)
       .then((res) => {
@@ -63,7 +63,7 @@ export const deleteGenre = (id, token) => (dispatch) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.get("https://mangalime.herokuapp.com/sanctum/csrf-cookie").then((response) => {
+  axios.get("https://mangalime-endpoint.herokuapp.com/sanctum/csrf-cookie").then((response) => {
     axios
       .delete(`${Api}/genre/${id}`, config)
       .then((res) => {
@@ -95,7 +95,7 @@ export const putGenre = (id, input, token) => (dispatch) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.get("https://mangalime.herokuapp.com/csrf-cookie").then((response) => {
+  axios.get("https://mangalime-endpoint.herokuapp.com/csrf-cookie").then((response) => {
     axios
       .put(`${Api}/genre/${id}`, input, config)
       .then((res) => {
