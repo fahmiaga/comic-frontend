@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar-container">
-        <img src={logo} alt="" onClick={() => history.push("/landing-page")} />
+        <img src={logo} alt="" onClick={() => history.push("/")} />
         <div className="search-navbar">
           <input
             type="text"
@@ -104,7 +104,7 @@ const Navbar = () => {
         </div>
         {/* for mobile */}
         <div className="link-list-mobile">
-          <div className="active-m" onClick={() => history.push("/landing-page")}>
+          <div className="active-m" onClick={() => history.push("/")}>
             <i className="fas fa-home"></i>
           </div>
           <div className="" onClick={() => history.push("/genres")}>
