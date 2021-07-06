@@ -5,8 +5,8 @@ import {
   PUT_CONTENT,
 } from "../actionsType";
 import Swal from "sweetalert2";
-const Api = `https://mangalime.herokuapp.com/api`;
-const crsf = `https://mangalime.herokuapp.com`;
+const Api = `https://mangalime-endpoint.herokuapp.com/api`;
+const crsf = `https://mangalime-endpoint.herokuapp.com`;
 
 export const getContentByIdEpisode = (id, token) => (dispatch) => {
   const config = {
