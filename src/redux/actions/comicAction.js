@@ -8,6 +8,7 @@ import {
   PUT_COMIC,
   GET_COMICS_BY_GENRE,
   POST_RATING,
+  SEARCH_COMIC,
 } from "../actionsType";
 import Swal from "sweetalert2";
 
@@ -226,4 +227,24 @@ export const addRating = (id, input, token) => (dispatch) => {
         });
       });
   });
+};
+
+export const searchComic = (input, token) => (dispatch) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  // apiClient.get("sanctum/csrf-cookie").then((response) => {
+  axios
+    .get(`${Api}/comics/search/${input}`, config)
+    .then((res) => {
+      dispatch({
+        type: SEARCH_COMIC,
+        payload: res.data.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  // })
 };

@@ -4,10 +4,12 @@ import {
   GET_COMIC_BY_ID,
   GET_COMICS_BY_GENRE,
   POST_RATING,
+  SEARCH_COMIC,
 } from "../actionsType";
 
 const initialState = {
   comics: [],
+  comicsResult: [],
   comic: "",
   rating: "",
   message: "",
@@ -41,6 +43,11 @@ const comicReducer = (state = initialState, action) => {
       return {
         ...state,
         rating: payload,
+      };
+    case SEARCH_COMIC:
+      return {
+        ...state,
+        comicsResult: payload,
       };
     default:
       return state;

@@ -10,6 +10,13 @@ const AddComic = () => {
   const history = useHistory();
   const comics = useSelector((state) => state.comics.comics);
   const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("userdata"));
+
+  useEffect(() => {
+    if (user.role_id !== 1) {
+      history.push("/");
+    }
+  }, [user, history]);
 
   useEffect(() => {
     document.title = "Add Comic";

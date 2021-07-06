@@ -57,7 +57,6 @@ const FormAddContent = () => {
     }
   }, [message]);
 
-  console.log(message);
   return (
     <>
       <AdminNavbar />

@@ -1,0 +1,16 @@
+@import "../Variables/Colors";
+
+.search-result-container {
+  width: 100%;
+  position: relative;
+  .search-result {
+    width: 100%;
+    height: 1200px;
+    position: absolute;
+    z-index: 999;
+    background-color: $white;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+}

@@ -1,7 +1,10 @@
 import React from "react";
 
 const AdminNavbar = () => {
-  const name = "Kotaro Minami Agata";
+  const user = JSON.parse(localStorage.getItem("userdata"));
+  const imgProfile =
+    "http://lexaquiliabd.com/wp-content/uploads/2017/10/ATbrxjpyc.jpg";
+  const name = user.name;
 
   return (
     <>
@@ -9,7 +12,11 @@ const AdminNavbar = () => {
         <div className="admin-navbar-list">
           <p>{name.split(" ").slice(0, 2).join(" ")}</p>
           <img
-            src="http://lexaquiliabd.com/wp-content/uploads/2017/10/ATbrxjpyc.jpg"
+            src={
+              user.profile_image === "default.jpg"
+                ? imgProfile
+                : user.profile_image
+            }
             alt=""
             className="dropdown-toggle"
             id="dropdownMenu2"

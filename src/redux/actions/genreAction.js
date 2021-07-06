@@ -35,7 +35,6 @@ export const addGenre = (input, token) => (dispatch) => {
     axios
       .post(`${Api}/genre`, input, config)
       .then((res) => {
-        console.log(res);
         dispatch(getAllGenres(token));
         dispatch({
           type: POST_GENRE,
