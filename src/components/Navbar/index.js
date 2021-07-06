@@ -57,11 +57,11 @@ const Navbar = () => {
         </div>
         <div className="link-list">
           <ul>
-//             {user.role_id !== 1 ? (
-//               ""
-//             ) : (
+          {user.role_id !== 1 ? (
+              ""
+            ) : (
               <li onClick={() => history.push("/add-comic")}>Admin Page</li>
-//             )}
+            )}
 
             <li onClick={() => history.push("/genres")}>Genres</li>
             <li onClick={() => history.push("/schedules")}>Schedules</li>
