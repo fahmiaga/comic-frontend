@@ -1,8 +1,8 @@
 import axios from "axios";
 import { GET_DAYS, GET_SCHEDULE, POST_SCHEDULE } from "../actionsType";
 import Swal from "sweetalert2";
-const Api = `https://mangalime.herokuapp.com/api`;
-const crsf = `https://mangalime.herokuapp.com`;
+const Api = `https://mangalime-endpoint.herokuapp.com/api`;
+const crsf = `https://mangalime-endpoint.herokuapp.com`;
 
 export const getDays = (token) => (dispatch) => {
   const config = {
